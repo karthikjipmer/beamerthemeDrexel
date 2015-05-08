@@ -1,0 +1,138 @@
+% Based off of Madrid theme
+\usetheme{Madrid}
+
+% Typeset Math in serif fonts
+\usefonttheme[onlymath]{serif}
+
+% Drexel's "Official" sans font is Futura, but I found TeX Gyre Heros to be a close match 
+\usepackage{tgheros}
+
+% Uses circles and square instead of balls for a cleaner look
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{section in toc}[circle]
+\setbeamertemplate{subsection in toc}[square]
+
+% Drexel web color scheme
+% From http://drexel.edu/identity/web/colors/
+\definecolor{drexelblue}{HTML}{07294D}
+\definecolor{drexelgold}{HTML}{FFC600}
+
+\definecolor{drexelred}{HTML}{9E0B0F}
+\definecolor{drexelred2}{HTML}{971B2F}
+\definecolor{drexellightred}{HTML}{D14124}
+
+\definecolor{drexellightgray}{HTML}{D0D3D4}
+\definecolor{drexeldarkgray}{HTML}{333333}
+\definecolor{drexelwhite}{HTML}{E1E1E0}
+\definecolor{drexelgray}{HTML}{A7A8AA}
+\definecolor{drexeltan}{HTML}{BFB8AF}
+\definecolor{drexelgraygreen}{HTML}{BAC5B9}
+\definecolor{drexelblack}{HTML}{000000}
+
+\definecolor{drexellinkblue}{HTML}{006699}
+\definecolor{drexelaccentblue}{HTML}{006298}
+\definecolor{drexellightblue}{HTML}{6CACE4}
+
+\definecolor{drexelgreen}{HTML}{949300}
+\definecolor{drexellightgreen}{HTML}{B7BF10}
+\definecolor{drexelorange}{HTML}{DE7C00}
+\definecolor{drexellightorange}{HTML}{FF8F1C}
+
+% Drexel logo for title page
+\titlegraphic{\includegraphics[width=2cm]{drexel-logo}}
+
+% Custom colors
+\setbeamercolor{description item}{fg=drexelaccentblue}
+\setbeamercolor{block title}{fg=white, bg=drexelaccentblue}
+\setbeamercolor{fine separation line}{bg=drexelgold}
+\setbeamercolor{frametitle}{fg=white,bg=drexelblue}
+\setbeamercolor{structure}{bg=gray, fg=drexelblue}
+\setbeamercolor{title}{fg=white,bg=drexelblue}
+\setbeamercolor{test}{fg=white,bg=drexelgold}
+\setbeamercolor{alerted text}{fg=drexelred}
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+
+% Places a gold line below the header and above the footer.
+\makeatletter
+\setbeamertemplate{frametitle}
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[sep=0.3cm,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1ex%
+    \if@tempswa\else\csname beamer@fte\endcsname\fi%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}%
+  \vskip-17pt
+  \begin{beamercolorbox}[sep=0pt,ht=1.5px,wd=\the\@tempdima]{test}
+  \end{beamercolorbox}%
+}
+\makeatother
+
+
+% Use footnote references
+\usepackage[style=ieee,backend=bibtex,style=numeric,firstinits=true]{biblatex}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\renewcommand*{\bibfont}{\tiny}
+\setbeamerfont{footnote}{size=\fontsize{5pt}{4pt}}
+
+% Clear items I don't want to see in the footnotes and bibliography
+\AtEveryCitekey{
+\clearfield{issn}
+\clearfield{isbn}
+\clearfield{doi}
+\clearfield{pagetotal}
+\clearfield{pages}
+\clearfield{url}
+\clearfield{publisher}
+\clearfield{language}
+\clearlist{location}
+}
+\AtEveryBibitem{
+\clearfield{isbn}
+\clearfield{issn}
+\clearfield{doi}
+\clearfield{pagetotal}
+\clearfield{pages}
+\clearfield{url}
+\clearfield{publisher}
+\clearfield{language}
+}
+
+
+% Fix parenthesized years in articles having an issue date
+\renewbibmacro*{issue+date}{
+  \setunit{\addcomma\space}
+    \iffieldundef{issue}
+      {\usebibmacro{date}}
+      {\printfield{issue}
+       \setunit*{\addspace}
+       \usebibmacro{date}}
+  \newunit}
+  
+% Command for using footnotes in blocks and other environments
+%Footnotes in special environments
+\DeclareCiteCommand{\footfullcitetext}[\mkbibfootnotetext]
+  {\usebibmacro{prenote}}
+  {\usedriver
+     {\DeclareNameAlias{sortname}{default}}
+     {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+
