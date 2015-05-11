@@ -84,6 +84,19 @@
 \makeatother
 
 
+% Collapsed TOC showing subsections for current section only
+\newcommand{\expandedtoc}[0]{
+\begin{frame}
+\frametitle{\insertsection}
+  \tableofcontents[
+    currentsection,
+    sectionstyle=show/shaded,
+    subsectionstyle=show/show/hide,
+  ]
+\end{frame}
+}
+
+
 % Use footnote references
 \usepackage[style=ieee,backend=bibtex,style=numeric,firstinits=true]{biblatex}
 
