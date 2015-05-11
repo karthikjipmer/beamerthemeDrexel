@@ -1,0 +1,222 @@
+\documentclass[sans,10pt]{beamer}
+\usetheme{Drexel}
+
+\usepackage{appendixnumberbeamer}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{amsmath}
+
+% No navigation
+\beamertemplatenavigationsymbolsempty
+
+% Bibliography sources
+\addbibresource{example.bib}
+
+\DeclareGraphicsExtensions{.pdf}
+
+
+% Presentation title page metadata
+\title[Short Title]
+{Long Title for Presentation}
+\author[R. Canzanese]
+{Ray Canzanese}
+\institute[Drexel]
+{Dept. of Electrical and Computer Engineering\\
+Drexel University}
+\date[8 May 2015]
+{8 May 2015}
+
+\begin{document}
+%------------------------------------------------
+
+\frame{\titlepage}
+
+%------------------------------------------------
+
+% TOC with subsections hidden
+\begin{frame}
+\frametitle{Table of contents}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+%------------------------------------------------
+\section{Multicolumn layouts}
+%------------------------------------------------
+
+\expandedtoc{}
+
+%------------------------------------------------
+\subsection{Two columns}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Manual 2 column layout}
+\framesubtitle{Using columns}
+\begin{columns}[onlytextwidth,t]
+\begin{column}{.5\linewidth}
+Information
+\begin{itemize}
+\item Item 1 
+\item Item 2
+\item Item 3 
+\end{itemize}
+\end{column}
+\begin{column}{.5\linewidth}
+Another column
+\begin{itemize}
+\item With
+\item More
+\item Information
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Automatic 2 column layout}
+\framesubtitle{Using multicols}
+\begin{multicols}{2}
+\begin{itemize}
+\item Atoms (strings)
+\item Boot configuration
+\item Debugging
+\item Device driver control
+\item Environment settings
+\item Error handling
+\item Files and general input/output 
+\item Jobs
+\item Local procedure calls (LPC)
+\item Memory management
+\item Miscellaneous
+\item Object management
+\item Plug and play
+\item Power management
+\item Processes and threads
+\item Processor information
+\item Registry access
+\item Security functions
+\item Synchronization
+\item Timers
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+%------------------------------------------------
+\section{Environments}
+%------------------------------------------------
+
+\expandedtoc{}
+
+%------------------------------------------------
+
+\subsection{Description}
+\begin{frame}
+\frametitle{Description}
+\begin{description}[Longest Key]
+\item[Key] Description text
+\item[Longest Key] More descriptions
+\end{description}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Blocks}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Blocks}
+\begin{block}{Block Title}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\end{block}
+\begin{alertblock}{Alert Block Title}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\end{alertblock}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Definition and example}
+\begin{definition}
+A prime number is a number that...
+\end{definition}
+\begin{example}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\end{example}   
+\end{frame}
+
+%------------------------------------------------
+\subsection{Math blocks}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Theorem, corollary, and proof}
+\begin{theorem}[Pythagoras] 
+$ a^2 + b^2 = c^2$
+\end{theorem}
+\begin{corollary}
+$ x + y = y + x  $
+\end{corollary}
+\begin{proof}
+$\omega +\phi = \epsilon $
+\end{proof}
+\end{frame}
+
+%------------------------------------------------
+\section{Other}
+%------------------------------------------------
+
+\expandedtoc{}
+
+%------------------------------------------------
+\subsection{Graphics}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Graphics}
+\begin{figure}
+\centering
+\includegraphics[width=.5\textwidth]{drexel-logo}
+\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Citations}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Citations}
+\begin{block}{Block Title}
+Citations within a block require a little more work.~\footnotemark
+\end{block}
+\footfullcitetext{Doe2015}
+Others are much easier\footfullcite{Doe2015a}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Verbatim}
+%------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Verbatim environment}
+\begin{Verbatim}[fontsize=\small, frame=single]
+Here is some verbatim text
+\end{Verbatim}
+\end{frame}
+
+%------------------------------------------------
+\appendix
+%------------------------------------------------
+
+\begin{frame}[t] %Add allowframebreaks if you have a lot of references
+\frametitle{Works cited}
+\begin{multicols}{2}[]
+\printbibliography
+\end{multicols}
+\end{frame}
+
+%------------------------------------------------
+
+\end{document}
+
