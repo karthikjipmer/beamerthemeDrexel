@@ -94,6 +94,26 @@
 }
 \makeatother
 
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \begin{beamercolorbox}[sep=0pt,ht=1.5px,wd=\textwidth]{test}
+  \end{beamercolorbox}%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\texttt{Draft 709985f} %   \insertsection replaced with Draft for now
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\today\hspace*{2em} % \insertshortdate{}\hspace*{2em} replaced with today's date, for now.
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
 
 % Collapsed TOC showing subsections for current section only
 \newcommand{\expandedtoc}[0]{
